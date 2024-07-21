@@ -47,7 +47,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: palmerovicdev/fsa-storage-service:latest
+        tags: palmerovicdev/storage-service:latest
         build-args: |
           DB_HOST: ${{secrets.DB_HOST}}
           DB_PORT: ${{secrets.DB_PORT}}
