@@ -11,7 +11,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class ImageDataEntity {
@@ -19,12 +19,19 @@ public class ImageDataEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true)
     private String name;
+    @Column(nullable = false)
     private String type;
 
     @Lob
-    @Column(length = 100000)
+    @Column(length = 900_000_000, nullable = false)
     private byte[] data;
+
+    @Override
+    public final int hashCode() {
+        return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
+    }
 
     @Override
     public final boolean equals(Object o) {
@@ -35,11 +42,6 @@ public class ImageDataEntity {
         if (thisEffectiveClass != oEffectiveClass) return false;
         ImageDataEntity that = (ImageDataEntity) o;
         return getId() != null && Objects.equals(getId(), that.getId());
-    }
-
-    @Override
-    public final int hashCode() {
-        return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
     }
 
 }
