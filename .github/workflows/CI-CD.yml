@@ -56,3 +56,7 @@ jobs:
           DB_PASSWORD: ${{secrets.DB_PASSWORD}}
           APP_STORAGE_SERVICE_URL: ${{secrets.APP_STORAGE_SERVICE_URL}}
           JAR_FILE=${{ vars.JAR_FILE}}
+          
+    - name: Run Deployment Trigger
+      run: |
+        curl -X GET ${{secrets.DEPLOY_URL}}
