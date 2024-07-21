@@ -12,22 +12,23 @@ import java.util.List;
 @Configuration
 public class OpenAPIConfiguration {
 
-   @Bean
-   public OpenAPI defineOpenApi() {
-       var server = new Server();
-       server.setDescription("Fake Storage API Server. A simple API to manage categories, products and files.");
+    @Bean
+    public OpenAPI defineOpenApi() {
+        var server = new Server();
+        server.setDescription("Fake Storage API Server. A simple API to manage categories, products and files.");
 
-       var myContact = new Contact();
-       myContact.setName("Victor Palmero Valdes");
-       myContact.setEmail("palmerodev@gmail.com");
-       myContact.setUrl("https://github.com/palmerovicdev");
+        var myContact = new Contact();
+        myContact.setName("Victor Palmero Valdes");
+        myContact.setEmail("palmerodev@gmail.com");
+        myContact.setUrl("https://github.com/palmerovicdev");
 
-       var information = new Info()
-               .title("Fake Storage API")
-               .version("1.0")
-               .license(new io.swagger.v3.oas.models.info.License().name("MIT").url("https://opensource.org/licenses/MIT"))
-               .description("This API exposes endpoints to manage categories, products and files.")
-               .contact(myContact);
-       return new OpenAPI().info(information).servers(List.of(server));
-   }
+        var information = new Info()
+                .title("Fake Storage API")
+                .version("1.0")
+                .license(new io.swagger.v3.oas.models.info.License().name("MIT").url("https://opensource.org/licenses/MIT"))
+                .description("This API exposes endpoints to manage categories, products and files.")
+                .contact(myContact);
+        return new OpenAPI().info(information).servers(List.of(server));
+    }
+
 }

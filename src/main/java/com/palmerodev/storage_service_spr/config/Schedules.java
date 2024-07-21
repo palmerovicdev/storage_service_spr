@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class Schedules {
 
-    private final StorageController storageController;
     @Value("${app.storage-service.url}")
     String SERVER_URL;
 
