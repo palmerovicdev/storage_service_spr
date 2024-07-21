@@ -23,12 +23,12 @@ jobs:
     - name: Build with Maven
       run: mvn clean install
       env:
-        DB_HOST: ${{secrets.DB_HOST}}
-        DB_PORT: ${{secrets.DB_PORT}}
-        DB_NAME: ${{secrets.DB_NAME}}
-        DB_USER: ${{secrets.DB_USER}}
-        DB_PASSWORD: ${{secrets.DB_PASSWORD}}
-        APP_STORAGE_SERVICE_URL: ${{secrets.APP_STORAGE_SERVICE_URL}}
+        DB_HOST: ${{vars.DB_HOST}}
+        DB_PORT: ${{vars.DB_PORT}}
+        DB_NAME: ${{vars.DB_NAME}}
+        DB_USER: ${{vars.DB_USER}}
+        DB_PASSWORD: ${{vars.DB_PASSWORD}}
+        APP_STORAGE_SERVICE_URL: ${{vars.APP_STORAGE_SERVICE_URL}}
 
     - name: Copy artifact to root
       run: cp target/${{ vars.JAR_FILE}} .
@@ -49,12 +49,12 @@ jobs:
         push: true
         tags: palmerovicdev/storage-service:latest
         build-args: |
-          DB_HOST: ${{secrets.DB_HOST}}
-          DB_PORT: ${{secrets.DB_PORT}}
-          DB_NAME: ${{secrets.DB_NAME}}
-          DB_USER: ${{secrets.DB_USER}}
-          DB_PASSWORD: ${{secrets.DB_PASSWORD}}
-          APP_STORAGE_SERVICE_URL: ${{secrets.APP_STORAGE_SERVICE_URL}}
+          DB_HOST: ${{vars.DB_HOST}}
+          DB_PORT: ${{vars.DB_PORT}}
+          DB_NAME: ${{vars.DB_NAME}}
+          DB_USER: ${{vars.DB_USER}}
+          DB_PASSWORD: ${{vars.DB_PASSWORD}}
+          APP_STORAGE_SERVICE_URL: ${{vars.APP_STORAGE_SERVICE_URL}}
           JAR_FILE=${{ vars.JAR_FILE}}
           
     - name: Run Deployment Trigger
