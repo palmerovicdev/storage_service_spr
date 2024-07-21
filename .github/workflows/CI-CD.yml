@@ -59,4 +59,4 @@ jobs:
           
     - name: Run Deployment Trigger
       run: |
-        curl --request GET '${{secrets.DEPLOY_URL}} --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
+        curl --request GET '${{secrets.DEPLOY_URL}}' --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
