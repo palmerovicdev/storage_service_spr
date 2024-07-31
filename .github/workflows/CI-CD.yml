@@ -29,6 +29,7 @@ jobs:
         DB_USER: ${{vars.DB_USER}}
         DB_PASSWORD: ${{vars.DB_PASSWORD}}
         APP_STORAGE_SERVICE_URL: ${{vars.APP_STORAGE_SERVICE_URL}}
+        JWT_SECRET_KEY: ${{secrets.JWT_SECRET_KEY}}
 
     - name: Copy artifact to root
       run: cp target/${{ vars.JAR_FILE}} .
@@ -55,7 +56,8 @@ jobs:
           DB_USER: ${{vars.DB_USER}}
           DB_PASSWORD: ${{vars.DB_PASSWORD}}
           APP_STORAGE_SERVICE_URL: ${{vars.APP_STORAGE_SERVICE_URL}}
-          JAR_FILE=${{ vars.JAR_FILE}}
+          JAR_FILE: ${{ vars.JAR_FILE}}
+          JWT_SECRET_KEY: ${{secrets.JWT_SECRET_KEY}}
           
     - name: Run Deployment Trigger
       run: |
